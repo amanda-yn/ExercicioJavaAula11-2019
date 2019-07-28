@@ -158,7 +158,7 @@ public class ListasTest {
 	public void deveRetornarMedia() { 	
 		Listas listaDeNumeros = new Listas();
 		Double media = listaDeNumeros.retornarMediaDaListaDeNumerosDouble(listaDeNumerosDouble);
-		Assert.assertEquals(37.23, media, 37.22);
+		Assert.assertEquals(37.23, media, 0.22);
 	}
 	
 	@Test
