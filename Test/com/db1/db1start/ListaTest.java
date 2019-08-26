@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ListasTest {
+public class ListaTest {
 
 	private List<String> listaDeCores;
 	private List<String> listaDeItens;
@@ -19,17 +19,17 @@ public class ListasTest {
 	
 	@Before
 	public void SetUp() {
-		listaDeCores = new ArrayList<String>();
+		listaDeCores = new ArrayList<>();
 		listaDeCores.add("Azul");
 		listaDeCores.add("Branco");
 		
-		listaDeItens = new ArrayList<String>();
+		listaDeItens = new ArrayList<>();
 		listaDeItens.add("Pedra");
 		listaDeItens.add("Pocao");
 		listaDeItens.add("Runa");
 		listaDeItens.add("Lampada");
 		
-		listaDeStrings = new ArrayList<String>();
+		listaDeStrings = new ArrayList<>();
 		listaDeStrings.add("Papel");
 		listaDeStrings.add("Caneta");
 		listaDeStrings.add("Borracha");
@@ -45,41 +45,41 @@ public class ListasTest {
 		listaDeNumerosDouble.add(15.8);
 		listaDeNumerosDouble.add(85.4);
 		
-		listaDeNomes = new ArrayList<String>();
+		listaDeNomes = new ArrayList<>();
 		listaDeNomes.add("JOSE");
 		listaDeNomes.add("JOALDO");
-		listaDeNomes.add("ANA");
-		listaDeNomes.add("VAGNER");
-		listaDeNomes.add("CLECIO");
+		listaDeNomes.add("ANA"); 
+		listaDeNomes.add("VAGNER"); 
+		listaDeNomes.add("CLECIO"); 
 		listaDeNomes.add("MARIA");
-		listaDeNomes.add("RODOLPHO");
-		listaDeNomes.add("ANA LAURA");
-		listaDeNomes.add("MARCOS");
-		listaDeNomes.add("RODOLFO");
-		listaDeNomes.add("ROBERVAL");
-		listaDeNomes.add("WAGNER");
+		listaDeNomes.add("RODOLPHO"); 
+		listaDeNomes.add("ANA LAURA"); 
+		listaDeNomes.add("MARCOS"); 
+		listaDeNomes.add("RODOLFO"); 
+		listaDeNomes.add("ROBERVAL"); 
+		listaDeNomes.add("WAGNER"); 
+		listaDeNomes.add("JOSÉ"); 
 		listaDeNomes.add("JOSÉ");
-		listaDeNomes.add("JOSÉ");	
 	}
 	
 	@Test
 	public void deveRetornarNomeCores() {
-		Listas coresQueMaisGosta = new Listas();
-		List<String> retorneNomeCores = coresQueMaisGosta.nomeCores(); 		
-		Assert.assertTrue(retorneNomeCores.contains("Azul"));
-		Assert.assertTrue(retorneNomeCores.contains("Branco"));
+		Lista cores = new Lista();
+		List<String> nomeCores = cores.retornarListaCores(); 		
+		Assert.assertTrue(nomeCores.contains("Azul"));
+		Assert.assertTrue(nomeCores.contains("Branco"));
 	}
 	
 	@Test
 	public void deveRetornarQuantidadeItens() {
-		Listas itens = new Listas();
+		Lista itens = new Lista();
 		int quantidadeItens = itens.retornarQuantidadeDeItens(listaDeItens);
 		Assert.assertEquals(4, quantidadeItens);
 	}
 	
 	@Test
 	public void removeValorDaSegundaPosicaoDeUmaLista() {
-		Listas palavras = new Listas();
+		Lista palavras = new Lista();
 		List<String> retornarListaDeString = palavras.removerValorDaSegundaPosicaoDeUmaLista("DB1", "Curso", "JAVA");
 		Assert.assertEquals(2, retornarListaDeString.size());
 		Assert.assertEquals("DB1", retornarListaDeString.get(0));
@@ -88,7 +88,7 @@ public class ListasTest {
 	
 	@Test
 	public void deveordenarNomeCores() {
-		Listas cores = new Listas();
+		Lista cores = new Lista();
 		List<String> retornarListaDeCoresOrdenados = cores.ordenarNomeCores(listaDeCores);
 		Assert.assertEquals(2, retornarListaDeCoresOrdenados.size());
 		Assert.assertEquals("Azul", retornarListaDeCoresOrdenados.get(0));
@@ -97,7 +97,7 @@ public class ListasTest {
 	
 	@Test
 	public void deveRetornarListaDeCoreSemUmaCor() { 		
-		Listas cores = new Listas();
+		Lista cores = new Lista();
 		List<String> listaDeCoresEsperada = listaDeCores;
 		listaDeCoresEsperada.remove("Azul");
 		List<String> listaDeCoresSemUmaCor = cores.deveRetornarListaDeCoresSemUmaCor(listaDeCores, "Azul");
@@ -107,7 +107,7 @@ public class ListasTest {
 	
 	@Test
 	public void deveRetornarListaDecrescente() {
-		Listas listaString = new Listas();
+		Lista listaString = new Lista();
 		List<String> listaDecrescente = listaString.retornarListaDecrescente(listaDeStrings);
 		Assert.assertEquals(3, listaDecrescente.size());
 		Assert.assertEquals("Borracha", listaDecrescente.get(0));
@@ -117,8 +117,8 @@ public class ListasTest {
 	
 	@Test
 	public void retorneListaParImpar() {
-		Listas listaDeNumeros = new Listas();
-		List<List<Integer>> listaComNumerosParesImpares = listaDeNumeros.listaParImpar(listaDeNumerosInteiros);
+		Lista listaDeNumeros = new Lista();
+		List<List<Integer>> listaComNumerosParesImpares = listaDeNumeros.retornarListaParImpar(listaDeNumerosInteiros);
 		List<Integer> listaPar = listaComNumerosParesImpares.get(0);
 		List<Integer> listaImpar = listaComNumerosParesImpares.get(1);
 		Assert.assertEquals(2, listaComNumerosParesImpares.size());
@@ -128,15 +128,15 @@ public class ListasTest {
 	
 	@Test
 	public void deveExibirNomesDistintosOrdenados() {
-		Listas listaDeNomesDistintos = new Listas();
+		Lista listaDeNomesDistintos = new Lista();
 		Map <String, List<String>> mapDeNomesOrdenadosPeloPrimeiroCaracter = listaDeNomesDistintos.ordenarNomesDistintos(listaDeNomes);
-		List<String> letraA = mapDeNomesOrdenadosPeloPrimeiroCaracter.get("A");
-		List<String> letraC = mapDeNomesOrdenadosPeloPrimeiroCaracter.get("C");
-		List<String> letraJ = mapDeNomesOrdenadosPeloPrimeiroCaracter.get("J");
-		List<String> letraM = mapDeNomesOrdenadosPeloPrimeiroCaracter.get("M");
-		List<String> letraR = mapDeNomesOrdenadosPeloPrimeiroCaracter.get("R");
-		List<String> letraV = mapDeNomesOrdenadosPeloPrimeiroCaracter.get("V");
-		List<String> letraW = mapDeNomesOrdenadosPeloPrimeiroCaracter.get("W");
+		List<String> letraA = List.of("ANA", "ANA LAURA");
+		List<String> letraC = List.of("CLECIO");
+		List<String> letraJ = List.of("JOALDO", "JOSE", "JOSÉ", "JOSÉ");
+		List<String> letraM = List.of("MARCOS", "MARIA");
+		List<String> letraR = List.of("ROBERVAL", "RODOLFO", "RODOLPHO");
+		List<String> letraV = List.of("VAGNER");
+		List<String> letraW = List.of("WAGNER");
 		Assert.assertEquals(7, mapDeNomesOrdenadosPeloPrimeiroCaracter.size());
 		Assert.assertEquals(letraA, mapDeNomesOrdenadosPeloPrimeiroCaracter.get("A"));
 		Assert.assertEquals(letraC, mapDeNomesOrdenadosPeloPrimeiroCaracter.get("C"));
@@ -149,35 +149,35 @@ public class ListasTest {
 	
 	@Test
 	public void deveRetornarSoma() { 	
-		Listas listaDeNumeros = new Listas();
+		Lista listaDeNumeros = new Lista();
 		int soma = listaDeNumeros.retornarSomaDaListaDeNumerosInteiros(listaDeNumerosInteiros);
 		Assert.assertEquals(10, soma);
 	}
 	
 	@Test
 	public void deveRetornarMedia() { 	
-		Listas listaDeNumeros = new Listas();
+		Lista listaDeNumeros = new Lista();
 		Double media = listaDeNumeros.retornarMediaDaListaDeNumerosDouble(listaDeNumerosDouble);
-		Assert.assertEquals(37.23, media, 0.22);
+		Assert.assertEquals(37.23, media, 0.02);
 	}
 	
 	@Test
 	public void deveRetornarMenorValorDeUmaLista() { 	
-		Listas listaDeNumeros = new Listas();
+		Lista listaDeNumeros = new Lista();
 		int menorValorDaLista = listaDeNumeros.buscarMenorValorDeUmaLista(listaDeNumerosInteiros);
 		Assert.assertEquals(1, menorValorDaLista);
 	}
 	
 	@Test
 	public void deveRetornarMaiorValorDeUmaLista() { 	
-		Listas listaDeNumeros = new Listas();
+		Lista listaDeNumeros = new Lista();
 		int maiorValorDaLista = listaDeNumeros.buscarMaiorValorDeUmaLista(listaDeNumerosInteiros);
 		Assert.assertEquals(4, maiorValorDaLista);
 	}
 	
 	@Test
 	public void deveRemoverNumerosImparesDeUmaLista() { 	
-		Listas listaDeNumeros = new Listas();
+		Lista listaDeNumeros = new Lista();
 		List<Integer> numerosImparesRemovidos = listaDeNumeros.removerNumerosImpares(listaDeNumerosInteiros);
 		Assert.assertEquals(2, numerosImparesRemovidos.size());
 		Assert.assertEquals(2, numerosImparesRemovidos.get(0), 0);
@@ -186,7 +186,7 @@ public class ListasTest {
 	
 	@Test
 	public void deveRetornarAsVogaisDeUmaFrase() { 	
-		Listas frase = new Listas();
+		Lista frase = new Lista();
 		String vogais = frase.retornarVogaisDeUmaFrase("Curso de JAVA");
 		Assert.assertEquals("uoeAA", vogais);
 	}
